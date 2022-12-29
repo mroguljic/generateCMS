@@ -3,10 +3,10 @@ import os
 if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument('--name', type=str, default='GluGluToHHTobbVV_node_cHHH1_HpT190', help='name of dataset')
-    parser.add_argument('--config', type=str, default='GluGluToHHTobbVV_node_cHHH1_HpT190_cfg',  help='config of dataset')
-    parser.add_argument('--eosdir', type=str, default='/store/user/cmantill/privateProduction/ONESTEP/', help='eosdir')
-    parser.add_argument('--site', type=str, default='T2_US_Caltech_Ceph', help='site')
+    parser.add_argument('--name', type=str, default='HbbGamma_JHUGen_pythia8', help='name of dataset')
+    parser.add_argument('--config', type=str, default='Hbb_fragment',  help='config of dataset')
+    parser.add_argument('--eosdir', type=str, default='/store/group/phys_b2g/mrogulji/Hgamma_HToBB/one_step', help='eosdir')
+    parser.add_argument('--site', type=str, default='T2_CH_CERN', help='site')
     parser.add_argument('--begin-seed', type=int, default=0, help='begin seed, should be between 0 and 99')
     args = parser.parse_args()
 
@@ -26,14 +26,13 @@ if __name__ == '__main__':
     config.JobType.pluginName = 'PrivateMC'
 
     config.section_("Data")
-    #nevent = 10
-    nevent = 400
+    nevent = 1000
     config.Data.inputDBS = 'global'
     config.Data.splitting = 'EventBased'
     config.Data.unitsPerJob = nevent
-    config.Data.totalUnits = 400000
+    config.Data.totalUnits = 10000
     #config.Data.totalUnits = 2000000 
-    #config.Data.totalUnits = 1 # for testing
+    config.Data.totalUnits = 1 # for testing
     config.Data.publication = True
     config.Data.allowNonValidInputDataset = True
 
