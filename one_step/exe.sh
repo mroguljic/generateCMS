@@ -57,6 +57,7 @@ SEED=$(((${BEGINSEED} + ${JOBNUM}) * 100))
 
 # need to specify seeds otherwise gridpacks will be chosen from the same routine!!
 # remember to identify process.RandomNumberGeneratorService.externalLHEProducer.initialSeed="int(${SEED})" and externalLHEProducer->generator!!
+echo ${CMSSW_BASE}
 echo Configuration/GenProduction/python/${PROCNAME}.py
 cmsDriver.py Configuration/GenProduction/python/${PROCNAME}.py --python_filename wmLHEGEN_cfg.py --eventcontent RAWSIM --customise Configuration/DataProcessing/Utils.addMonitoring --datatier GEN --fileout file:lhegen.root --conditions 106X_mc2017_realistic_v6 --beamspot Realistic25ns13TeVEarly2017Collision --customise_commands process.RandomNumberGeneratorService.generator.initialSeed="int(${SEED})"\\nprocess.source.numberEventsInLuminosityBlock="cms.untracked.uint32(100)" --step LHE,GEN --geometry DB:Extended --era Run2_2017 --mc --nThreads $NTHREAD -n $NEVENT # || exit $? ;
 
@@ -95,8 +96,8 @@ cmsDriver.py --python_filename RECO_cfg.py --eventcontent AODSIM --customise Con
 
 ## Run MiniAODv2 with -j FrameworkJobReport.xml 
 cmsDriver.py --python_filename MiniAODv2_cfg.py --eventcontent MINIAODSIM --customise Configuration/DataProcessing/Utils.addMonitoring --datatier MINIAODSIM --fileout file:miniv2.root --conditions 106X_mc2017_realistic_v9 --step PAT --procModifiers run2_miniAOD_UL --geometry DB:Extended --filein file:reco.root --era Run2_2017 --runUnscheduled --mc --nThreads $NTHREAD -n $NEVENT || exit $? ;
-cmsRun -j FrameworkJobReport.xml MiniAODv2_cfg.py
+#cmsRun -j FrameworkJobReport.xml MiniAODv2_cfg.py
 
 ## Run NanoAODv9
-#cmsDriver.py  --python_filename NanoAODv9_cfg.py --eventcontent NANOAODSIM --customise Configuration/DataProcessing/Utils.addMonitoring --datatier NANOAODSIM --fileout file:nanov9.root --conditions 106X_mc2017_realistic_v9 --step NANO --filein file:miniv2.root --era Run2_2017,run2_nanoAOD_106Xv2 --no_exec --mc  --nThreads $NTHREAD -n $NEVENT || exit $? ; 
-#cmsRun -j FrameworkJobReport.xml NanoAODv9_cfg.py
+cmsDriver.py  --python_filename NanoAODv9_cfg.py --eventcontent NANOAODSIM --customise Configuration/DataProcessing/Utils.addMonitoring --datatier NANOAODSIM --fileout file:nanov9.root --conditions 106X_mc2017_realistic_v9 --step NANO --filein file:miniv2.root --era Run2_2017,run2_nanoAOD_106Xv2 --no_exec --mc  --nThreads $NTHREAD -n $NEVENT || exit $? ; 
+cmsRun -j FrameworkJobReport.xml NanoAODv9_cfg.py

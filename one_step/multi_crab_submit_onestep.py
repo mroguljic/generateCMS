@@ -30,9 +30,8 @@ if __name__ == '__main__':
     config.Data.inputDBS = 'global'
     config.Data.splitting = 'EventBased'
     config.Data.unitsPerJob = nevent
-    config.Data.totalUnits = 10000
-    #config.Data.totalUnits = 2000000 
-    config.Data.totalUnits = 1 # for testing
+    #config.Data.totalUnits = 10000
+    config.Data.totalUnits = 5 # for testing
     config.Data.publication = True
     config.Data.allowNonValidInputDataset = True
 
@@ -58,9 +57,9 @@ if __name__ == '__main__':
     config.Data.outputPrimaryDataset = args.name
     config.Data.outLFNDirBase = args.eosdir + args.name
     config.JobType.allowUndistributedCMSSW = True
-    config.JobType.psetName = 'FAKEMiniAODv2_cfg.py'
-    # config.JobType.psetName = 'FAKENanoAODv9_cfg.py'
-    config.JobType.inputFiles = ['FrameworkJobReport.xml', 'inputs']
+    #config.JobType.psetName = 'FAKEMiniAODv2_cfg.py'
+    config.JobType.psetName = 'FAKENanoAODv9_cfg.py'
+    config.JobType.inputFiles = ['FrameworkJobReport.xml', 'inputs', 'gammaHiggs0MyyTobb_M125_13TeV_JHUGenV750_pythia8_slc7_amd64_gcc820_CMSSW_10_6_0.tgz']
     config.JobType.maxMemoryMB = 5000
     config.JobType.numCores = 1
     config.JobType.sendExternalFolder = True
