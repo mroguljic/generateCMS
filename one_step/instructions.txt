@@ -1,6 +1,6 @@
 Tested on lxplus7
 ```
-git clone git@github.com:mroguljic/generateCMS.git
+git clone -b TPrimePair git@github.com:mroguljic/generateCMS.git
 
 cmsrel CMSSW_10_6_26
 cd CMSSW_10_6_26
