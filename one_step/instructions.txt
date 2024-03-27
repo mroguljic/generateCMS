@@ -1,0 +1,14 @@
+Tested on lxplus7
+```
+git clone git@github.com:mroguljic/generateCMS.git
+
+cmsrel CMSSW_10_6_26
+cd CMSSW_10_6_26
+cmsenv
+source /cvmfs/cms.cern.ch/crab3/crab.sh
+cd ../generateCMS/one_step
+```
+Edit multi_crab_submit_onestep.py. To change: nevent, totalUnits, inputFiles.
+Make sure that the fragment contains the path to the gridpack
+Run `python multi_crab_submit_onestep.py --year YEAR --begin-seed SEED --name NAME --site SITE --eosdir EOSDIR`
+Example: `python multi_crab_submit_onestep.py --year 2016 --begin-seed 2016 --name TpTp_test`

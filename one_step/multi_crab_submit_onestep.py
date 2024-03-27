@@ -27,11 +27,11 @@ if __name__ == '__main__':
     config.JobType.pluginName = 'PrivateMC'
 
     config.section_("Data")
-    nevent = 100
+    nevent = 10
     config.Data.inputDBS = 'global'
     config.Data.splitting = 'EventBased'
     config.Data.unitsPerJob = nevent
-    config.Data.totalUnits = 10000
+    config.Data.totalUnits = 10
     #config.Data.totalUnits = 5 # for testing
     config.Data.publication = False
     config.Data.allowNonValidInputDataset = True
@@ -62,7 +62,7 @@ if __name__ == '__main__':
     config.JobType.psetName = 'FAKENanoAODv9_cfg.py'
     #EDIT THIS
     config.JobType.inputFiles = ['FrameworkJobReport.xml', 'inputs', 'TT_SStt_slc7_amd64_gcc10_CMSSW_12_4_8_tarball.tar.xz']
-    config.JobType.maxMemoryMB = 5000
+    config.JobType.maxMemoryMB = 2500
     config.JobType.numCores = 1
     config.JobType.sendExternalFolder = True
     config.JobType.scriptArgs = ['nevent=%i'%nevent, 'nthread=1', 'procname=%s'%args.config, 'beginseed=%i'%args.begin_seed]  
